@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.text-primary {
+  color: blue;
+}
+
 @layer base {
   :root {
     --sidebar-width: 28rem;
@@ -14,6 +18,9 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    :root {
+  --primary: 222.2 47.4% 11.2%;
+}
   }
 
   .dark {
