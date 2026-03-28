@@ -9,13 +9,15 @@ function DashboardProvider({ children }) {
     "--sidebar-width": "18rem",
     "--sidebar-width-mobile": "20rem",
   }}
->   
+>     <div className="flex w-full min-h-screen">
         <AppSidebar/>
       
 
-        <div className="flex-1">
+        <div className="flex-1 bg-slate-100">
             <SidebarTrigger /> 
           {children}
+        </div>
+
         </div>
     </SidebarProvider>
   )

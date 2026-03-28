@@ -1,4 +1,5 @@
 "use client"
+
 import Image from "next/image"
 import { Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -36,11 +37,16 @@ export function AppSidebar() {
           <SidebarMenu>
             
               {SideBarOptions.map((option,index)=>(
-                <SidebarMenuItem key = {index} className={'p-1'}>
-                <SidebarMenuButton asChild className={'p-5'}>
+                <SidebarMenuItem key = {index} className='p-1'>
+                <SidebarMenuButton asChild className={`p-5 rounded-lg transition-all duration-200 
+  ${path == option.path 
+    ? "bg-blue-100" 
+        : "hover:bg-gray-100"
+  }
+`}>
                   <Link href = {option.path}>
-                  <option.icon/>
-                  <span className={`text-[16px] ${path === option.path ? "text-primary" : ""}`}>
+                  <option.icon className={`${path == option.path ? "text-primary" : ""}`}/>
+                  <span className={`text-[16px] font-medium ${path == option.path ? "text-primary" : ""}`}>
                   {option.name}
                   </span>
                   </Link>
