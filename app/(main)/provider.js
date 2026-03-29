@@ -1,6 +1,7 @@
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
 import React from 'react'
 import { AppSidebar } from './_components/AppSidebar'
+import WelcomeContainer from './dashboard/_components/WelcomeContainer'
 
 function DashboardProvider({ children }) {
   return (
@@ -14,7 +15,8 @@ function DashboardProvider({ children }) {
       
 
         <div className="flex-1 bg-slate-100">
-            <SidebarTrigger /> 
+            <SidebarTrigger />
+            <WelcomeContainer/> 
           {children}
         </div>
 
