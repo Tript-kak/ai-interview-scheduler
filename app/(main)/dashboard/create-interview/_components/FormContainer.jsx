@@ -19,10 +19,10 @@ function FormContainer({onHandleInputChange , GoToNext}) {
     const [interviewType,setInterviewType] = useState([]);
 
     useEffect(()=>{
-        if(interviewType){
-            onHandleInputChange('type',interviewType)
+        if(interviewType.length > 0){
+            onHandleInputChange('type',interviewType.join(", "));
         }
-    },[interviewType])
+    },[interviewType]);
 
     const AddInterviewType=(type)=>{
         const data = interviewType.includes(type);
@@ -41,19 +41,19 @@ function FormContainer({onHandleInputChange , GoToNext}) {
       <div>
         <h2 className="text-sm font-medium">Job Position</h2>
         <Input placeholder="e.g. Full Stack Developer" className={"mt-2"} 
-        onChange = {(event)=>onHandleInputChange('JobPosition',event.target.value)}/>
+        onChange = {(event)=>onHandleInputChange('jobPosition',event.target.value)}/>
       </div>
 
       <div className="mt-5">
         <h2 className="text-sm font-medium">Job Description</h2>
         <Textarea placeholder="Enter Job Description" className="h-52 mt-2" 
-        onChange = {(event)=>onHandleInputChange('JobDescription',event.target.value)}/>
+        onChange = {(event)=>onHandleInputChange('jobDescription',event.target.value)}/>
       </div>
 
       <div className="mt-5 ">
         <h2 className="text-sm font-medium">Interview Duration</h2>
         
-          <Select onValueChange={(value)=>onHandleInputChange('Duration' , value)}>
+          <Select onValueChange={(value)=>onHandleInputChange('duration' , value)}>
             <SelectTrigger className="w-full mt-2 bg-white">
               <SelectValue placeholder="Select Duration" />
             </SelectTrigger>

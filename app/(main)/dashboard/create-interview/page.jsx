@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Progress } from "@/components/ui/progress";
 import FormContainer from "./_components/FormContainer";
 import QuestionList from "./_components/QuestionList";
+import { Toaster , toast } from "sonner";
 
 function CreteInterview() {
   const router = useRouter();
@@ -12,19 +13,23 @@ function CreteInterview() {
   const [formData, setFormData] = useState();
 
   const onHandleInputChange = (field, value) => {
-    setFormData((prev) => ({
+    setFormData(prev => ({
       ...prev,
       [field]: value,
     }));
 
+    };
+
     const onGoToNext = () => {
-      if (formData?.length <= 3) {
+      console.log("🚨 BEFORE VALIDATION:", formData);
+      if (!formData?.jobPosition || !formData?.jobDescription || !formData?.duration || !formData.type) {
+        toast("Please enter all details!")
         return;
       }
 
       setStep(step+1);
     };
-  };
+  
   return (
     <div className="mt-10 px-10 md:px-24 lg:px-24 xl:px-56">
       <div className="flex gap-5 items-center">
@@ -38,7 +43,7 @@ function CreteInterview() {
           GoToNext={() => onGoToNext()}
         />
       ) : step == 2 ? (
-        <QuestionList />
+        <QuestionList formData = {formData}/>
       ) : null}
     </div>
   );
