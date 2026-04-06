@@ -6,11 +6,13 @@ import { Progress } from "@/components/ui/progress";
 import FormContainer from "./_components/FormContainer";
 import QuestionList from "./_components/QuestionList";
 import { Toaster , toast } from "sonner";
+import InterviewLink from "./_components/InterviewLink";
 
 function CreteInterview() {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState();
+  const [interviewId,setInterviewId] = useState();
 
   const onHandleInputChange = (field, value) => {
     setFormData(prev => ({
@@ -27,8 +29,13 @@ function CreteInterview() {
         return;
       }
 
-      setStep(step+1);
+      setStep(step+1);     
     };
+
+    const onCreateLink=(interview_id)=>{
+      setInterviewId(interview_id);
+      setStep(step+1);
+    }
   
   return (
     <div className="mt-10 px-10 md:px-24 lg:px-24 xl:px-56">
@@ -43,8 +50,11 @@ function CreteInterview() {
           GoToNext={() => onGoToNext()}
         />
       ) : step == 2 ? (
-        <QuestionList formData = {formData}/>
-      ) : null}
+        <QuestionList formData = {formData} onCreateLink={(interview_id)=>onCreateLink()}/>
+      ) : step == 3 ?<InterviewLink interview_id = {interviewId}
+                                    formData = {formData} />
+
+       : null}
     </div>
   );
 }

@@ -9,7 +9,7 @@ import { useUser } from "@/app/provider";
 import { Loader2 } from "lucide-react";
 import { v4 as uuidv4 } from 'uuid';
 
-function QuestionList({formData}) {
+function QuestionList({formData , onCreateLink}) {
   const [loading, setLoading] = useState(true);
   const [questionList,setQuestionList] = useState([]);
   const {user}=useUser();
@@ -63,7 +63,7 @@ const { data, error } = await supabase
 
   setSaveloading(false);
 
-  
+  onCreateLink(interview_id)
           
   }
   return (
@@ -90,7 +90,7 @@ const { data, error } = await supabase
           <div className='flex justify-end mt-10'>
               <Button onClick={()=>onFinish()} disabled = {saveLoading}>
               {saveLoading&& <Loader2 className = 'animate-spin'/>}
-            Finish</Button>
+            Create Interview Link & Finish</Button>
           </div>
           
     </div>
