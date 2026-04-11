@@ -37,7 +37,7 @@ export async function POST(req) {
     })
 
     const completion = await openai.chat.completions.create({
-      model: "qwen/qwen3.6-plus:free",
+      model: "google/gemma-4-26b-a4b-it:free",
       messages: [{ role: "user", content: FINAL_PROMPT }],
       
     });
